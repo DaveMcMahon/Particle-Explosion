@@ -54,13 +54,15 @@ bool Screen::init() {
 
 	return true;
 }
-void Screen::close() {
-	delete[] m_buffer;
-	SDL_DestroyTexture(m_texture);
-	SDL_DestroyRenderer(m_renderer);
-	SDL_DestroyWindow(m_window);
-	SDL_Quit();
+
+void Screen::screenUpdate() {
+	SDL_UpdateTexture(m_texture, NULL, m_buffer, SCREEN_WIDTH * sizeof(Uint32));
+	SDL_RenderClear(m_renderer);
+	SDL_RenderCopy(m_renderer, m_texture, NULL, NULL);
+	SDL_RenderPresent(m_renderer);
+
 }
+
 bool Screen::processEvents() {
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
@@ -85,12 +87,13 @@ void Screen::setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue) {
 	m_buffer[(y * SCREEN_WIDTH) + x] = color;
 
 }
-void Screen::screenUpdate() {
-	SDL_UpdateTexture(m_texture, NULL, m_buffer, SCREEN_WIDTH * sizeof(Uint32));
-	SDL_RenderClear(m_renderer);
-	SDL_RenderCopy(m_renderer, m_texture, NULL, NULL);
-	SDL_RenderPresent(m_renderer);
 
+void Screen::close() {
+	delete[] m_buffer;
+	SDL_DestroyTexture(m_texture);
+	SDL_DestroyRenderer(m_renderer);
+	SDL_DestroyWindow(m_window);
+	SDL_Quit();
 }
 
 }
