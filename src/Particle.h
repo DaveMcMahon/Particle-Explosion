@@ -12,6 +12,9 @@ struct Particle {
 
 	Particle();
 	virtual ~Particle();
+
+	void update();
+
 };
 
 }

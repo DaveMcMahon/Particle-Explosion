@@ -24,11 +24,17 @@ int main() {
 
 		const Particle* const pParticles = swarm.getParticles();
 
-		int elapsed = SDL_GetTicks();
+		screen.clear();
+		swarm.update();
 
-		unsigned char green = (unsigned char) (1 + sin(elapsed * 0.0001) * 128);
-		unsigned char red = (unsigned char) (1 + sin(elapsed * 0.0002) * 128);
-		unsigned char blue = (unsigned char) (1 + sin(elapsed * 0.0003) * 128);
+		int elapsed = SDL_GetTicks();
+//		unsigned char green = (unsigned char) (1 + sin(elapsed * 0.0001) * 128);
+//		unsigned char red = (unsigned char) (1 + sin(elapsed * 0.0002) * 128);
+//		unsigned char blue = (unsigned char) (1 + sin(elapsed * 0.0003) * 128);
+
+		unsigned char blue = 255;
+		unsigned char red = 255;
+		unsigned char green = 255;
 
 		for (int i = 0; i < Swarm::NPARTICLES; i++) {
 			Particle particle = pParticles[i];
