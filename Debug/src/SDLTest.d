@@ -39,7 +39,7 @@ src/SDLTest.o: ../src/SDLTest.cpp ../src/Screen.h \
   /usr/local/include/SDL2/SDL_render.h \
   /usr/local/include/SDL2/SDL_system.h \
   /usr/local/include/SDL2/SDL_timer.h \
-  /usr/local/include/SDL2/SDL_version.h
+  /usr/local/include/SDL2/SDL_version.h ../src/Swarm.h ../src/Particle.h
 
 ../src/Screen.h:
 
@@ -128,3 +128,7 @@ src/SDLTest.o: ../src/SDLTest.cpp ../src/Screen.h \
 /usr/local/include/SDL2/SDL_timer.h:
 
 /usr/local/include/SDL2/SDL_version.h:
+
+../src/Swarm.h:
+
+../src/Particle.h:
