@@ -2,9 +2,10 @@
 
 namespace mac {
 
-Particle::Particle() {
-	m_x = 2.0 * rand() / RAND_MAX - 1;
-	m_y = 2.0 * rand() / RAND_MAX - 1;
+Particle::Particle() :
+		m_x(0), m_y(0) {
+	m_direction = (2 * M_PI * rand()) / RAND_MAX;
+	m_speed = (0.01 * rand()) / RAND_MAX;
 }
 
 Particle::~Particle() {
@@ -12,12 +13,12 @@ Particle::~Particle() {
 }
 
 void Particle::update() {
+	double xspeed = m_speed * cos(m_direction);
+	double yspeed = m_speed * sin(m_direction);
 
-	const double x_speed = 0.01 * (((2.0 * rand()) / RAND_MAX) - 1);
-	const double y_speed = 0.01 * (((2.0 * rand()) / RAND_MAX) - 1);
+	m_x += xspeed;
+	m_y += yspeed;
 
-	m_x += x_speed;
-	m_y += y_speed;
 }
 
 }
